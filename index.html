@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+   <link href="stye.css" type="text/css" rel="stylesheet">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
-    <link href="stye.css" type="text/css" rel="stylesheet">
+   
     <title>Twiddler</title>
   </head>
-  <body>
-    <h1>Twiddler is awesome!</h1>
+  <body class="body">
+
+     <div class="background">
+      <img src="Twiddler-pic.jpg" alt="A bird with a hat on" class="bird">
+      <div id="title"> 
+        <h1>Twiddler</h1>
+      </div>
+    <div id="content">
+    </div>
+    <button id="newTweets" value="Refresh Page" onClick="window.location.reload()">Refresh Twids</button>
+ 
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
+        var $body = $('#content');
         $body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var time = (new Date)
+          $tweet.text('@' + tweet.user + ': ' + tweet.message +"\n" + " Posted " + time);
+          $tweet.click(function() {
+        
+          })
           $tweet.appendTo($body);
           index -= 1;
         }
-  
       });
 
     </script>
-    <h1>Twiddler</h1>
+
+   </div>
   </body>
 </html>
