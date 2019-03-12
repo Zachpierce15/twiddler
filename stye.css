@@ -1,6 +1,9 @@
  .body {
 	/*color: black*/
-	background-color: tan;
+	background-color: white;
+	width: 600px;
+	margin: auto;
+	background-image: url("cool-pic.jpeg");
 }
 #newTweets {
     background-color: #47c2f5;
@@ -13,8 +16,11 @@
     margin-bottom: 30px;
 }
 .background {
-	background-color: white;
+	background-color: #cacecb;
 	text-align: center;
+
+    padding: 10px;
+    border: solid;
 }
 .bird {
     width: 238px;
@@ -26,4 +32,9 @@
 h1 {
 	text-align: center;
 	border-bottom: solid;
+}
+.tweetstyle {
+	text-align: left;
+    border: 1px solid black;
+    padding: 10px 10px
 }

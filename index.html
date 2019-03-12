@@ -16,26 +16,66 @@
       </div>
     <div id="content">
     </div>
-    <button id="newTweets" value="Refresh Page" onClick="window.location.reload()">Refresh Twids</button>
- 
+    <button id="newTweets" value="Refresh Page">Refresh Twids</button>
+
     <script>
+      function clickMe(userName) {
+        console.log(streams.users[userName]);
+
+        $('#content').html('');
+
+        var index = streams.users[userName].length - 1;
+        while(index >= 0){
+          var tweet = streams.users[userName][index];
+          var $tweet = $('<div class="tweetstyle"></div>');
+
+          var time = (new Date)
+          $tweet.text('@' + tweet.user + ': ' + tweet.message +"\n" + " Posted " + time);
+          
+          // var $input = $('<input type="button" value="Show My Tweets" onClick="clickMe(\'' + tweet.user + '\');" />');
+          // $input.appendTo($tweet);
+
+          // $tweet.click(function() {
+        
+          // })
+          $tweet.appendTo($('#content'));
+          index -= 1;
+        }  
+      }
 
       $(document).ready(function(){
         var $body = $('#content');
         $body.html('');
 
+        console.log(streams.home);
+
+        let tempVar = streams.home;
+
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          var time = (new Date)
-          $tweet.text('@' + tweet.user + ': ' + tweet.message +"\n" + " Posted " + time);
-          $tweet.click(function() {
+          var $tweet = $('<div class="tweetstyle"></div>');
+
+          var breakTag = '<br/>';
+      
+          var time = (new Date);
+          $tweet.html('@' + tweet.user + ': ' + tweet.message + breakTag + " Posted " + time);
+          
+          var $input = $('<input type="button" value="Show My Tweets" onClick="clickMe(\'' + tweet.user + '\');" />');
+          $input.appendTo($tweet);
+
+          // $tweet.click(function() {
         
-          })
+          // })
           $tweet.appendTo($body);
           index -= 1;
         }
+
+
+
+        $('#newTweets').on('click', function() {
+          window.location.reload();
+        });
       });
 
     </script>
